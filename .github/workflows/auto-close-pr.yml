@@ -20,12 +20,10 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const body = 'This pull request is being automatically closed because we do not accept external contributions to this repository.'
-
             await github.rest.issues.createComment({
               ...context.repo,
               issue_number: context.issue.number,
-              body: body
+              body: 'This pull request is being automatically closed because we do not accept external contributions to this repository.'
             })
 
             await github.rest.pulls.update({
